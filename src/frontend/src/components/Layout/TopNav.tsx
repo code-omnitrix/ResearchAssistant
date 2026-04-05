@@ -8,30 +8,47 @@ export function TopNav() {
   const isCanvas = location.pathname === '/canvas';
 
   return (
-    <header className="flex h-12 flex-shrink-0 items-center justify-between border-b border-white/6 bg-surface1/80 px-5 backdrop-blur-md">
-      <div className="flex items-center gap-3">
+    <header className="relative z-20 flex h-14 flex-shrink-0 items-center justify-between border-b border-white/8 bg-surface1/75 px-4 backdrop-blur-xl sm:px-6">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-phase-blue/40 to-transparent" />
+
+      <div className="flex min-w-0 items-center gap-3">
         <button
           onClick={() => { reset(); navigate('/'); }}
-          className="font-display text-sm tracking-wide text-text1 transition hover:text-phase-blue"
+          className="group flex min-w-0 items-center gap-3 text-left"
         >
-          Uptiq Canvas
+          <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/8 bg-[linear-gradient(180deg,rgba(124,168,255,0.18),rgba(255,143,102,0.1))] font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-phase-amber shadow-[0_10px_24px_rgba(0,0,0,0.24)]">
+            UQ
+          </span>
+          <span className="min-w-0">
+            <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-text3">
+              Uptiq Research Studio
+            </span>
+            <span className="block truncate font-display text-xl text-text1 transition group-hover:text-phase-amber">
+              Spatial Canvas
+            </span>
+          </span>
         </button>
         {paper && isCanvas && (
           <>
-            <span className="text-text3/40">/</span>
-            <span className="max-w-[300px] truncate text-xs text-text2">{paper.title}</span>
+            <span className="h-6 w-px bg-white/8" />
+            <span className="max-w-[320px] truncate rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-[11px] text-text2">
+              {paper.title}
+            </span>
           </>
         )}
       </div>
+
       <div className="flex items-center gap-2">
         {isCanvas && (
           <button
             onClick={() => setPipelineFeedOpen(!pipelineFeedOpen)}
-            className="flex items-center gap-1.5 rounded-lg border border-white/8 px-3 py-1.5 text-[11px] text-text3 transition hover:border-white/15 hover:text-text2"
+            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-text2 transition hover:border-phase-blue/35 hover:bg-white/[0.05] hover:text-text1"
           >
-            Pipeline
+            {pipelineFeedOpen ? 'Hide pipeline' : 'Pipeline'}
             {progressEvents.length > 0 && (
-              <span className="rounded bg-white/5 px-1.5 py-0.5 text-[10px]">{progressEvents.length}</span>
+              <span className="rounded-full bg-phase-blue/15 px-2 py-0.5 text-[10px] text-phase-blue">
+                {progressEvents.length}
+              </span>
             )}
           </button>
         )}

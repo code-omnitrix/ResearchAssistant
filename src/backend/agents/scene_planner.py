@@ -28,9 +28,23 @@ _SCENE_HEIGHTS = {
     "COMPARISON":  460,
     "MATHFOCUS":   480,
 }
-_SCENE_GAP     = 160
-_SCENE_START_X = 200
-_SCENE_START_Y = 80
+_SCENE_GAP     = 180
+_LANE_START_X  = [180, 1360, 2540]
+_LANE_START_Y  = [120, 320, 220]
+
+_PHASE_LANES = {
+    "HOOK": 1,
+    "FOUNDATION": 0,
+    "MECHANISM": 1,
+    "EVIDENCE": 2,
+    "IMPLICATIONS": 2,
+    "SYNTHESIS": 1,
+    "COMPARISON": 2,
+    "DERIVATION": 1,
+    "SIMULATION": 2,
+    "DEFINITION": 0,
+    "QUERY": 1,
+}
 
 # Artifact dimensions per layout template
 _ARTIFACT_DIMS = {
@@ -42,18 +56,41 @@ _ARTIFACT_DIMS = {
 }
 
 
+def _estimate_scene_height(scene: dict) -> int:
+    layout = scene.get("layout", "LANDSCAPE")
+    base_height = _SCENE_HEIGHTS.get(layout, 520)
+    artifact = scene.get("artifact", {})
+    artifact_height = int(artifact.get("height") or _ARTIFACT_DIMS.get(layout, (580, 340))[1])
+    prose_target = int(scene.get("prose_outline", {}).get("word_count_target", 320) or 320)
+    prose_height = max(200, min(360, int(prose_target * 0.4)))
+    equation_bonus = 70 if scene.get("equations") else 0
+    return max(base_height, artifact_height, prose_height + equation_bonus) + 180
+
+
 def _compute_canvas_positions(scenes: list[dict]) -> list[dict]:
     """
-    Recompute canvas_y for every scene using the estimated scene heights so that
-    scenes don't overlap even if the LLM computed wrong values.
+    Place scenes across multiple lanes with staggered starts so the canvas feels
+    spatial instead of like a single stacked report.
     """
-    y_cursor = _SCENE_START_Y
-    for scene in scenes:
-        scene["canvas_x"] = _SCENE_START_X
-        scene["canvas_y"] = y_cursor
-        layout = scene.get("layout", "LANDSCAPE")
-        height = _SCENE_HEIGHTS.get(layout, 520)
-        y_cursor += height + _SCENE_GAP
+    lane_y = list(_LANE_START_Y)
+
+    for index, scene in enumerate(scenes):
+        preferred_lane = _PHASE_LANES.get(scene.get("phase", "MECHANISM"), index % len(_LANE_START_X))
+        lane = min(
+            range(len(_LANE_START_X)),
+            key=lambda candidate: lane_y[candidate] + abs(candidate - preferred_lane) * 180,
+        )
+        layer = index // len(_LANE_START_X)
+        x_offset = 0 if (layer + lane) % 2 == 0 else 120
+        if lane == 1:
+            x_offset -= 80
+        elif lane == 2:
+            x_offset += 60
+
+        scene["canvas_x"] = _LANE_START_X[lane] + x_offset
+        scene["canvas_y"] = lane_y[lane]
+        lane_y[lane] += _estimate_scene_height(scene) + _SCENE_GAP
+
     return scenes
 
 
@@ -94,7 +131,7 @@ def _fallback_scenes(concepts: list[dict], equations: list[dict]) -> list[dict]:
             "subtitle": concept.get("subtitle", ""),
             "phase":    phase,
             "layout":   layout,
-            "canvas_x": _SCENE_START_X,
+            "canvas_x": _LANE_START_X[i % len(_LANE_START_X)],
             "canvas_y": y_cursor,
             "description":       concept.get("description", ""),
             "key_insight":       concept.get("key_insight", ""),
@@ -120,7 +157,7 @@ def _fallback_scenes(concepts: list[dict], equations: list[dict]) -> list[dict]:
         })
         y_cursor += _SCENE_HEIGHTS[layout] + _SCENE_GAP
 
-    return scenes
+    return _compute_canvas_positions(scenes)
 
 
 def plan_scenes(

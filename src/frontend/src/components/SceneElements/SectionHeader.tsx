@@ -5,13 +5,14 @@ const PHASE_COLORS: Record<string, string> = {
   FOUNDATION: 'var(--phase-foundation)',
   MECHANISM: 'var(--phase-mechanism)',
   EVIDENCE: 'var(--phase-evidence)',
-  IMPLICATIONS: 'var(--phase-implications)',
+          fontFamily: 'var(--font-mono)',
+          letterSpacing: '0.18em',
   SYNTHESIS: 'var(--phase-synthesis)',
   COMPARISON: 'var(--phase-comparison)',
-  DERIVATION: 'var(--phase-comparison)',
-  SIMULATION: 'var(--phase-mechanism)',
-  DEFINITION: 'var(--phase-foundation)',
-  QUERY: 'var(--phase-query)',
+          background: `color-mix(in srgb, ${color} 16%, transparent)`,
+          border: `1px solid color-mix(in srgb, ${color} 30%, transparent)`,
+          borderRadius: 999,
+          padding: '4px 12px',
 };
 
 interface Props {
@@ -44,11 +45,12 @@ export default function SectionHeader({ phase, title, subtitle }: Props) {
       </span>
       <h2
         style={{
-          fontFamily: "'Instrument Serif', serif",
-          fontSize: 28,
-          fontWeight: 400,
+          fontFamily: 'var(--font-display)',
+          fontSize: 32,
+          fontWeight: 500,
           color: 'var(--text-primary)',
-          lineHeight: 1.25,
+          lineHeight: 1.12,
+          letterSpacing: '-0.03em',
           margin: 0,
         }}
       >
@@ -57,11 +59,10 @@ export default function SectionHeader({ phase, title, subtitle }: Props) {
       {subtitle && (
         <p
           style={{
-            fontFamily: "'Lora', Georgia, serif",
-            fontSize: 15,
-            fontStyle: 'italic',
+            fontFamily: 'var(--font-prose)',
+            fontSize: 17,
             color: 'var(--text-secondary)',
-            margin: '4px 0 0',
+            margin: '8px 0 0',
           }}
         >
           {subtitle}

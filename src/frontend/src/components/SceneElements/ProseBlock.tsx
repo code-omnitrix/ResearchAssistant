@@ -15,13 +15,14 @@ export default function ProseBlock({ block, accentColor, selected }: Props) {
     <div
       className="prose-block"
       style={{
-        maxWidth: 460,
-        fontFamily: "'Lora', Georgia, serif",
-        fontSize: 15,
-        lineHeight: 1.85,
+        maxWidth: 640,
+        fontFamily: 'var(--font-prose)',
+        fontSize: 18,
+        lineHeight: 1.8,
         color: 'var(--text-primary)',
-        borderLeft: selected ? `3px solid ${accentColor ?? 'var(--phase-hook)'}` : '3px solid transparent',
-        paddingLeft: 14,
+        borderLeft: selected ? `2px solid ${accentColor ?? 'var(--phase-hook)'}` : '2px solid transparent',
+        paddingLeft: 18,
+        paddingRight: 4,
         transition: 'border-color 0.2s ease',
       }}
     >

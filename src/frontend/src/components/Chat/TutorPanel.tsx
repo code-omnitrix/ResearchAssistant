@@ -86,61 +86,57 @@ export function TutorPanel() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="absolute left-0 top-0 z-30 flex h-10 items-center gap-2 rounded-br-lg border-b border-r border-white/8 bg-surface1 px-4 text-xs text-text2 hover:text-text1"
+        className="absolute left-4 top-4 z-30 flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface1/88 px-4 text-[11px] font-medium uppercase tracking-[0.18em] text-text2 shadow-[0_18px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-phase-blue/35 hover:text-text1"
       >
-        ≡ Studio
+        Open studio
       </button>
     );
   }
 
   return (
-    <aside className="flex h-full w-[340px] flex-shrink-0 flex-col border-r border-white/8 bg-[var(--surface-panel,#3C3B39)]">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-white/6 px-4 py-3">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-text1" style={{ fontFamily: "'Geist', system-ui, sans-serif" }}>
-            ≡ RESEARCH STUDIO
-          </span>
+    <aside className="relative z-10 flex h-full w-[320px] max-w-[92vw] flex-shrink-0 flex-col border-r border-white/8 bg-[var(--surface-panel)] shadow-[28px_0_70px_rgba(0,0,0,0.32)] backdrop-blur-2xl md:w-[360px]">
+      <div className="flex items-center justify-between border-b border-white/8 px-4 py-4">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-phase-amber">Research studio</p>
+          <p className="mt-2 text-sm font-semibold text-text1">Tutor aligned to your viewport</p>
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className="text-xs text-text3 hover:text-text1"
+          className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-text3 transition hover:border-white/20 hover:text-text1"
         >
-          ✕
+          Close
         </button>
       </div>
 
-      {/* Paper + viewport context */}
-      <div className="border-b border-white/6 px-4 py-2.5">
-        <div className="flex items-center gap-2">
-          <span className="text-xs">📄</span>
-          <span className="truncate text-xs font-medium text-text2">
+      <div className="border-b border-white/8 px-4 py-4">
+        <div className="rounded-[22px] border border-white/8 bg-white/[0.03] px-4 py-3">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-text3">Active paper</p>
+          <p className="mt-2 truncate text-sm font-medium text-text1">
             {paper?.title ?? 'No paper loaded'}
-          </span>
+          </p>
+          {sceneOrder.length > 0 && (
+            <div className="mt-3 text-[11px] text-text3">
+              Scene {currentIndex || '-'} / {sceneOrder.length}
+              {visibleCount > 0 && ` | In viewport: ${visibleCount}`}
+            </div>
+          )}
         </div>
-        {sceneOrder.length > 0 && (
-          <div className="mt-1 text-[10px] text-text3">
-            Scene {currentIndex || '–'} / {sceneOrder.length}
-            {visibleCount > 0 && ` · In viewport: ${visibleCount}`}
-          </div>
-        )}
       </div>
 
-      {/* Messages */}
       <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4">
         {chatHistory.length === 0 && (
-          <div className="flex h-full flex-col items-center justify-center gap-2 text-center">
-            <p className="text-xs text-text3">Ask anything about the paper.</p>
-            <p className="text-[10px] text-text3/60">The tutor sees what you're looking at.</p>
+          <div className="flex h-full flex-col items-center justify-center gap-3 rounded-[24px] border border-white/8 bg-white/[0.03] p-6 text-center">
+            <p className="text-sm font-medium text-text1">Ask anything about the paper.</p>
+            <p className="text-xs leading-6 text-text3">The tutor sees the visible scene and uses that context when it answers.</p>
           </div>
         )}
         {chatHistory.map((entry, i) => (
           <div
             key={`${entry.role}-${i}`}
-            className={`max-w-[95%] rounded-xl px-3 py-2 text-[13px] leading-relaxed ${
+            className={`max-w-[95%] rounded-[22px] border px-3.5 py-3 text-[13px] leading-relaxed shadow-[0_10px_24px_rgba(0,0,0,0.16)] ${
               entry.role === 'user'
-                ? 'ml-auto bg-phase-blue/15 text-text1'
-                : 'bg-white/5 text-text2'
+                ? 'ml-auto border-phase-blue/20 bg-phase-blue/12 text-text1'
+                : 'border-white/6 bg-white/[0.04] text-text2'
             }`}
           >
             {entry.role === 'assistant' ? (
@@ -163,51 +159,48 @@ export function TutorPanel() {
         )}
       </div>
 
-      {/* Context chips */}
       {activeScene && (
-        <div className="flex flex-wrap gap-1.5 border-t border-white/6 px-4 py-2">
-          <span className="text-[10px] text-text3">Context:</span>
-          <span className="rounded bg-white/8 px-2 py-0.5 text-[10px] text-text2">
+        <div className="flex flex-wrap gap-1.5 border-t border-white/8 px-4 py-3">
+          <span className="text-[10px] uppercase tracking-[0.16em] text-text3">Context</span>
+          <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] text-text2">
             #{activeScene.id}
           </span>
           {activeScene.spec.equations?.slice(0, 2).map((eqId) => (
-            <span key={eqId} className="rounded bg-white/8 px-2 py-0.5 text-[10px] text-text2">
+            <span key={eqId} className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] text-text2">
               #{eqId}
             </span>
           ))}
         </div>
       )}
 
-      {/* Quick actions */}
-      <div className="flex flex-wrap gap-1.5 border-t border-white/6 px-4 py-2">
+      <div className="flex flex-wrap gap-1.5 border-t border-white/8 px-4 py-3">
         {QUICK_ACTIONS.map((action) => (
           <button
             key={action}
             onClick={() => send(action)}
-            className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-text3 transition hover:border-phase-blue/40 hover:text-text2"
+            className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-text3 transition hover:border-phase-blue/40 hover:text-text1"
           >
             {action}
           </button>
         ))}
       </div>
 
-      {/* Input */}
-      <div className="border-t border-white/6 p-3">
-        <div className="flex items-end gap-2 rounded-xl border border-white/10 bg-black/20 px-3 py-2 focus-within:border-phase-blue/40">
+      <div className="border-t border-white/8 p-3">
+        <div className="flex items-end gap-2 rounded-[22px] border border-white/10 bg-white/[0.03] px-3 py-2.5 focus-within:border-phase-blue/40">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
             rows={1}
             className="max-h-24 min-h-[24px] flex-1 resize-none bg-transparent text-sm text-text1 outline-none placeholder:text-text3/50"
-            placeholder="Ask anything about the paper…"
+            placeholder="Ask about the visible part of the paper..."
           />
           <button
             onClick={() => send()}
             disabled={!message.trim() || sending}
-            className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-phase-blue text-white transition disabled:opacity-30"
+            className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#7CA8FF,#73D2B4)] text-[#07111f] transition disabled:opacity-30"
           >
-            →
+            Go
           </button>
         </div>
       </div>

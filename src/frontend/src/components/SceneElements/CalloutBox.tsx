@@ -20,11 +20,12 @@ export default function CalloutBox({ data }: Props) {
     <div
       className="callout-box"
       style={{
-        maxWidth: 460,
+        maxWidth: 640,
         background: 'var(--surface-callout, rgba(255,255,255,0.03))',
+        border: '1px solid rgba(132, 152, 190, 0.12)',
         borderLeft: `3px solid ${variant.borderColor}`,
-        borderRadius: 6,
-        padding: '12px 16px',
+        borderRadius: 18,
+        padding: '14px 16px',
         display: 'flex',
         gap: 10,
         alignItems: 'flex-start',
@@ -34,8 +35,8 @@ export default function CalloutBox({ data }: Props) {
       <p
         style={{
           margin: 0,
-          fontFamily: "'Lora', Georgia, serif",
-          fontSize: 14,
+          fontFamily: 'var(--font-prose)',
+          fontSize: 16,
           lineHeight: 1.7,
           color: 'var(--text-primary)',
         }}

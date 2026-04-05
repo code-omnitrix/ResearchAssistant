@@ -17,6 +17,9 @@ from utils.logger import get_logger, log_event
 router = APIRouter(prefix="/api", tags=["extend"])
 logger = get_logger("backend.routes.extend")
 
+_LANE_START_X = [180, 1360, 2540]
+_ROW_GAP_Y = 540
+
 
 class ExtendRequest(BaseModel):
     query: str
@@ -26,6 +29,21 @@ class ExtendRequest(BaseModel):
     scenes: list[dict[str, Any]] = []
     equations: list[dict[str, Any]] = []
     paperExcerpt: str = ""
+
+
+def _pick_extension_position(parent_positions: list[dict[str, Any]], scene_count: int) -> dict[str, float]:
+    if parent_positions:
+        avg_x = sum(scene.get("canvas_x", 200) for scene in parent_positions) / len(parent_positions)
+        avg_y = max(scene.get("canvas_y", 80) for scene in parent_positions)
+        anchor_lane = min(range(len(_LANE_START_X)), key=lambda idx: abs(_LANE_START_X[idx] - avg_x))
+        lane = (anchor_lane + 1 + (scene_count % 2)) % len(_LANE_START_X)
+        x_shift = -80 if scene_count % 3 == 0 else 120
+        return {"x": _LANE_START_X[lane] + x_shift, "y": avg_y + 220 + (scene_count % 3) * 60}
+
+    lane = scene_count % len(_LANE_START_X)
+    row = scene_count // len(_LANE_START_X)
+    wave = 0 if (row + lane) % 2 == 0 else 120
+    return {"x": _LANE_START_X[lane] + wave, "y": 160 + row * _ROW_GAP_Y + lane * 60}
 
 
 @router.post("/extend")
@@ -97,12 +115,7 @@ async def extend_canvas(payload: ExtendRequest):
     parent_positions = [
         s for s in payload.scenes if s.get("id") in payload.parentSceneIds
     ]
-    if parent_positions:
-        avg_x = sum(s.get("canvas_x", 200) for s in parent_positions) / len(parent_positions)
-        avg_y = max(s.get("canvas_y", 80) for s in parent_positions)
-        position = {"x": avg_x + 300, "y": avg_y + 200}
-    else:
-        position = {"x": 200, "y": 80 + len(payload.scenes) * 420}
+    position = _pick_extension_position(parent_positions, len(payload.scenes))
 
     return {
         "sceneId": scene_id,

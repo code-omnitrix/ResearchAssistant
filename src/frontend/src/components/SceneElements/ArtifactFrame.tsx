@@ -44,11 +44,11 @@ export default function ArtifactFrame({ html, width, height }: Props) {
         position: 'relative',
         width,
         height,
-        borderRadius: 8,
+        borderRadius: 22,
         overflow: 'hidden',
-        background: 'var(--surface-artifact, rgba(60,59,57,0.96))',
-        border: '1px solid var(--border, #5C5A57)',
-        boxShadow: '0 4px 32px rgba(0,0,0,0.25)',
+        background: 'var(--surface-artifact, rgba(8,14,24,0.92))',
+        border: '1px solid rgba(132, 152, 190, 0.16)',
+        boxShadow: '0 24px 60px rgba(0,0,0,0.28)',
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -75,14 +75,14 @@ export default function ArtifactFrame({ html, width, height }: Props) {
             top: 8,
             right: 8,
             fontSize: 10,
-            color: 'rgba(255,255,255,0.4)',
-            background: 'rgba(0,0,0,0.5)',
-            borderRadius: 4,
-            padding: '2px 8px',
+            color: 'var(--text-secondary)',
+            background: 'rgba(9, 17, 31, 0.72)',
+            borderRadius: 999,
+            padding: '4px 10px',
             pointerEvents: 'none',
           }}
         >
-          ❚❚ paused
+          Paused
         </div>
       )}
     </div>

@@ -25,20 +25,21 @@ export default function FormulaBlock({ block, accentColor }: Props) {
     <div
       className="formula-block"
       style={{
-        maxWidth: 480,
+        maxWidth: 640,
         background: 'var(--surface-formula, rgba(255,255,255,0.025))',
-        border: '1px solid var(--border, #5C5A57)',
+        border: '1px solid rgba(132, 152, 190, 0.16)',
         borderLeft: `3px solid ${accentColor ?? 'var(--phase-hook)'}`,
-        borderRadius: 6,
-        padding: '14px 18px',
+        borderRadius: 18,
+        padding: '16px 18px',
       }}
     >
       {block.label && (
         <div
           style={{
             fontSize: 10,
-            fontVariant: 'small-caps',
-            letterSpacing: '0.1em',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
             color: 'var(--text-secondary)',
             marginBottom: 8,
           }}
@@ -56,11 +57,10 @@ export default function FormulaBlock({ block, accentColor }: Props) {
       {block.annotation && (
         <div
           style={{
-            fontSize: 12,
+            fontSize: 14,
             color: 'var(--text-secondary)',
-            marginTop: 8,
-            fontFamily: "'Lora', Georgia, serif",
-            fontStyle: 'italic',
+            marginTop: 10,
+            fontFamily: 'var(--font-prose)',
           }}
         >
           {block.annotation}
