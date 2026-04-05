@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ff7852",
+                        "on-tertiary-fixed-variant": "#5c1675",
+                        "background": "#0e0e0e",
+                        "on-secondary-fixed-variant": "#922d30",
+                        "inverse-on-surface": "#565555",
+                        "outline-variant": "#484847",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary": "#eaa5ff",
+                        "error": "#ff716c",
+                        "on-tertiary-fixed": "#2d003e",
+                        "on-primary-fixed-variant": "#581200",
+                        "surface-container-highest": "#262626",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-high": "#20201f",
+                        "secondary-dim": "#f57777",
+                        "surface-tint": "#ff8f70",
+                        "on-error": "#490006",
+                        "surface-container-low": "#131313",
+                        "on-tertiary-container": "#52076c",
+                        "on-secondary": "#53000b",
+                        "on-tertiary": "#5d1877",
+                        "on-secondary-container": "#ffc1bf",
+                        "tertiary-fixed-dim": "#d187e9",
+                        "surface-container": "#1a1919",
+                        "surface-variant": "#262626",
+                        "on-secondary-fixed": "#6a0e17",
+                        "on-background": "#ffffff",
+                        "surface": "#0e0e0e",
+                        "primary-dim": "#ff734c",
+                        "error-container": "#9f0519",
+                        "secondary-fixed": "#ffc3c0",
+                        "inverse-surface": "#fcf9f8",
+                        "on-surface": "#ffffff",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-container": "#e094f8",
+                        "on-error-container": "#ffa8a3",
+                        "secondary-fixed-dim": "#ffafac",
+                        "outline": "#767575",
+                        "secondary": "#fc7c7c",
+                        "on-primary-container": "#480d00",
+                        "primary-fixed": "#ff7852",
+                        "inverse-primary": "#b22e00",
+                        "on-primary": "#5c1300",
+                        "tertiary-dim": "#d187e9",
+                        "error-dim": "#d7383b",
+                        "primary": "#ff8f70",
+                        "primary-fixed-dim": "#ff5d2e",
+                        "tertiary-fixed": "#e094f8",
+                        "secondary-container": "#842327",
+                        "surface-bright": "#2c2c2c",
+                        "on-surface-variant": "#adaaaa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .dot-grid {
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .ghost-border {
+            border: 1px solid rgba(72, 72, 71, 0.15);
+        }
+        .glass-artifact {
+            background: rgba(32, 32, 31, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 overflow-hidden h-screen w-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-3 bg-[#0e0e0e] border-none">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-[#FF4500] uppercase tracking-widest font-headline">Stitch</span>
+<div class="hidden md:flex gap-6">
+<a class="text-gray-400 font-['Space_Grotesk'] tracking-tight text-sm hover:text-white transition-colors" href="#">Share</a>
+<a class="text-gray-400 font-['Space_Grotesk'] tracking-tight text-sm hover:text-white transition-colors" href="#">Export</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-white transition-colors">account_circle</button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#0e0e0e]/80 backdrop-blur-xl flex flex-col py-8 z-40 border-none shadow-[4px_0_24px_rgba(0,0,0,0.5)]">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-bold text-white font-headline">Architect</h1>
+<p class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter text-[#FF4500]">v2.4.0</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<!-- Active Tab: My Projects -->
+<a class="flex items-center gap-4 px-6 py-3 border-l-2 border-[#FF4500] bg-[#1a1a1a] text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-sm">folder</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">My Projects</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-sm">group</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Shared with me</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Recent</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Last 30 days</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Examples</span>
+</a>
+</nav>
+</aside>
+<!-- Canvas Area -->
+<main class="ml-64 mt-12 h-[calc(100vh-3rem)] dot-grid relative overflow-hidden">
+<!-- Artifact Node 1: Neural Topology -->
+<div class="absolute top-12 left-12 w-[480px] glass-artifact ghost-border rounded-lg p-6 shadow-2xl z-10">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">MODEL_TOPOLOGY.ARCH</span>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+</div>
+<div class="aspect-video w-full bg-surface-container-lowest rounded-md mb-6 relative flex items-center justify-center border border-outline-variant/10">
+<!-- Mock Diagram Representation -->
+<svg class="w-full h-full opacity-80" viewbox="0 0 400 200">
+<circle cx="50" cy="100" fill="#ff8f70" r="10"></circle>
+<circle cx="50" cy="60" fill="#ff8f70" r="10"></circle>
+<circle cx="50" cy="140" fill="#ff8f70" r="10"></circle>
+<path d="M70 100 L180 100" stroke="#484847" stroke-width="1"></path>
+<path d="M70 60 L180 100" stroke="#484847" stroke-width="1"></path>
+<path d="M70 140 L180 100" stroke="#484847" stroke-width="1"></path>
+<rect fill="none" height="60" stroke="#ff8f70" stroke-width="1" width="40" x="180" y="70"></rect>
+<text fill="#ff8f70" font-family="Space Grotesk" font-size="8" text-anchor="middle" x="200" y="105">FFN</text>
+<circle cx="350" cy="100" fill="#eaa5ff" r="10"></circle>
+</svg>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-4">
+                Architecture visualizing the multi-head attention blocks paired with feed-forward normalization layers. The latent dimension is fixed at <code class="text-primary-fixed">d_model = 512</code>.
+            </p>
+</div>
+<!-- Artifact Node 2: Math Formula -->
+<div class="absolute top-1/2 left-1/4 w-[320px] glass-artifact ghost-border rounded-lg p-6 shadow-2xl z-20">
+<span class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant uppercase block mb-6">SCALED_DOT_PRODUCT.TEX</span>
+<div class="bg-surface-container-highest/20 p-4 rounded border border-outline-variant/20 mb-4">
+<p class="font-headline text-lg text-primary text-center">
+                    Attention(Q, K, V) = softmax(<span class="text-on-surface">QK<sup>T</sup> / √d<sub>k</sub></span>)V
+                </p>
+</div>
+<p class="text-xs text-on-surface-variant font-body">
+                Normalization by the square root of the dimension prevents gradient vanishing during the softmax stage.
+            </p>
+</div>
+<!-- Artifact Node 3: Metadata -->
+<div class="absolute bottom-24 left-12 w-[240px] glass-artifact ghost-border rounded-lg p-4 shadow-xl z-10">
+<span class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant uppercase block mb-4">ENVIRONMENT_STATUS</span>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface-variant uppercase">Runtime</span>
+<span class="text-[10px] text-green-500 font-bold">STABLE</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-2/3"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface-variant uppercase">Compute</span>
+<span class="text-[10px] text-on-surface">A100 x 8</span>
+</div>
+</div>
+</div>
+<!-- AI Chat Sidebar -->
+<div class="absolute right-6 top-6 bottom-6 w-96 glass-artifact ghost-border rounded-xl shadow-2xl flex flex-col z-50 overflow-hidden">
+<div class="p-4 border-b border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label text-xs tracking-widest uppercase text-white font-bold">Research Assistant</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant text-sm hover:text-white">close</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- User Message -->
+<div class="flex flex-col items-end">
+<div class="bg-surface-container-highest px-4 py-3 rounded-lg rounded-tr-none max-w-[85%]">
+<p class="text-sm text-on-surface">Explain the attention mechanism visually in the current workspace.</p>
+</div>
+<span class="text-[10px] font-label text-outline uppercase mt-2">User</span>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col items-start">
+<div class="bg-primary/5 px-4 py-4 rounded-lg rounded-tl-none border-l-2 border-primary-fixed max-w-[95%]">
+<p class="text-sm text-on-surface leading-relaxed">
+                            I've updated the workspace with the requested visualizations:
+                        </p>
+<ul class="mt-3 space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-xs text-primary-fixed mt-1">check_circle</span>
+<span class="text-xs text-on-surface-variant"><strong class="text-on-surface">MODEL_TOPOLOGY.ARCH:</strong> A schematic mapping the data flow through the attention head.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-xs text-primary-fixed mt-1">check_circle</span>
+<span class="text-xs text-on-surface-variant"><strong class="text-on-surface">SCALED_DOT_PRODUCT.TEX:</strong> The mathematical backbone of the mechanism.</span>
+</li>
+</ul>
+<p class="mt-4 text-xs text-on-surface-variant italic">
+                            Focusing on Q (Query), K (Key), and V (Value) vectors—think of it as a retrieval system where the query searches through the keys to weight the values.
+                        </p>
+</div>
+<span class="text-[10px] font-label text-primary-fixed uppercase mt-2">Assistant</span>
+</div>
+</div>
+<!-- Input Box -->
+<div class="p-4 bg-surface-container-low/50 border-t border-outline-variant/10">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-highest/40 border border-outline-variant/20 rounded-full px-6 py-3 text-sm focus:ring-1 focus:ring-primary-fixed focus:border-primary-fixed outline-none transition-all placeholder:text-outline" placeholder="Draft a follow-up query..." type="text"/>
+<button class="absolute right-2 p-2 bg-primary rounded-full text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Floating Action Component: Ideate -->
+<button class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-primary px-8 py-4 rounded-full shadow-[0_8px_32px_rgba(255,69,0,0.3)] hover:scale-105 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-on-primary-container group-hover:rotate-12 transition-transform">lightbulb</span>
+<span class="font-headline font-bold text-on-primary-container tracking-tight uppercase text-sm">Ideate Artifact</span>
+</button>
+</main>
+<!-- Visual Artifact Shadow Overlays for Depth -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+</body></html>

@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sse-starlette
+python-multipart
+langchain
+langchain-openai
+langchain-community
+pydantic
+python-dotenv
+pypdf
+tenacity
+beautifulsoup4

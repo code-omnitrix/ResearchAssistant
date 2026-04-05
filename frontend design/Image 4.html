@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#ff7852",
+            "on-tertiary-fixed-variant": "#5c1675",
+            "background": "#0e0e0e",
+            "on-secondary-fixed-variant": "#922d30",
+            "inverse-on-surface": "#565555",
+            "outline-variant": "#484847",
+            "surface-dim": "#0e0e0e",
+            "tertiary": "#eaa5ff",
+            "error": "#ff716c",
+            "on-tertiary-fixed": "#2d003e",
+            "on-primary-fixed-variant": "#581200",
+            "surface-container-highest": "#262626",
+            "surface-container-lowest": "#000000",
+            "surface-container-high": "#20201f",
+            "secondary-dim": "#f57777",
+            "surface-tint": "#ff8f70",
+            "on-error": "#490006",
+            "surface-container-low": "#131313",
+            "on-tertiary-container": "#52076c",
+            "on-secondary": "#53000b",
+            "on-tertiary": "#5d1877",
+            "on-secondary-container": "#ffc1bf",
+            "tertiary-fixed-dim": "#d187e9",
+            "surface-container": "#1a1919",
+            "surface-variant": "#262626",
+            "on-secondary-fixed": "#6a0e17",
+            "on-background": "#ffffff",
+            "surface": "#0e0e0e",
+            "primary-dim": "#ff734c",
+            "error-container": "#9f0519",
+            "secondary-fixed": "#ffc3c0",
+            "inverse-surface": "#fcf9f8",
+            "on-surface": "#ffffff",
+            "on-primary-fixed": "#000000",
+            "tertiary-container": "#e094f8",
+            "on-error-container": "#ffa8a3",
+            "secondary-fixed-dim": "#ffafac",
+            "outline": "#767575",
+            "secondary": "#fc7c7c",
+            "on-primary-container": "#480d00",
+            "primary-fixed": "#ff7852",
+            "inverse-primary": "#b22e00",
+            "on-primary": "#5c1300",
+            "tertiary-dim": "#d187e9",
+            "error-dim": "#d7383b",
+            "primary": "#ff8f70",
+            "primary-fixed-dim": "#ff5d2e",
+            "tertiary-fixed": "#e094f8",
+            "secondary-container": "#842327",
+            "surface-bright": "#2c2c2c",
+            "on-surface-variant": "#adaaaa"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0e0e0e;
+      background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+      background-size: 32px 32px;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .glass-artifact {
+      background: rgba(26, 25, 25, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(72, 72, 71, 0.15);
+    }
+    .ghost-border {
+      border: 1px solid rgba(72, 72, 71, 0.2);
+    }
+    .technical-grid-fade {
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+  </style>
+</head>
+<body class="text-on-background min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#0e0e0e]/80 backdrop-blur-xl h-screen w-64 left-0 top-0 shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-50 border-r border-outline-variant/10">
+<div class="px-6 mb-10">
+<div class="text-lg font-bold text-white font-headline">Architect</div>
+<div class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter text-primary">v2.4.0</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-6 py-3 border-l-2 border-[#FF4500] bg-[#1a1a1a] text-white group cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined mr-3 text-sm">folder</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">My Projects</span>
+</div>
+<div class="flex items-center px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 group cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined mr-3 text-sm">group</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Shared with me</span>
+</div>
+<div class="flex items-center px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 group cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined mr-3 text-sm">history</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Recent</span>
+</div>
+<div class="flex items-center px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 group cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined mr-3 text-sm">calendar_today</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Last 30 days</span>
+</div>
+<div class="flex items-center px-6 py-3 text-gray-500 hover:bg-[#1a1a1a] hover:text-gray-200 group cursor-pointer transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined mr-3 text-sm">lightbulb</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-tighter">Examples</span>
+</div>
+</nav>
+</aside>
+<main class="ml-64 flex flex-col min-h-screen relative">
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center w-full px-6 py-3 bg-[#0e0e0e] sticky top-0 z-40">
+<div class="text-xl font-bold text-[#FF4500] uppercase tracking-widest font-headline">Stitch</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-4">
+<a class="font-['Space_Grotesk'] tracking-tight text-sm text-gray-400 hover:text-white transition-colors" href="#">Share</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm text-gray-400 hover:text-white transition-colors" href="#">Export</a>
+</nav>
+<button class="text-gray-400 hover:text-white Active: scale-95 duration-150">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
+<!-- Spatial Depth Elements (Decorative) -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-tertiary/5 rounded-full blur-[160px] pointer-events-none"></div>
+<!-- Welcome Messaging -->
+<div class="max-w-4xl w-full text-center mb-12 relative z-10">
+<h1 class="text-[3.5rem] font-headline font-bold tracking-tight text-white mb-6 leading-tight">
+          Welcome to <span class="text-primary">Spatial Canvas</span>.
+        </h1>
+<p class="text-on-surface-variant text-lg font-body max-w-2xl mx-auto mb-10">
+          The technical autopsy of your ideas. Draft, simulate, and architect multi-layered solutions in a high-fidelity coordinate space.
+        </p>
+<!-- Query Chips -->
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-5 py-2 rounded-full ghost-border bg-surface-container-low text-on-surface-variant font-label text-[11px] uppercase tracking-wider hover:bg-surface-container transition-all hover:text-white">
+            A dashboard for satellite telemetry
+          </button>
+<button class="px-5 py-2 rounded-full ghost-border bg-surface-container-low text-on-surface-variant font-label text-[11px] uppercase tracking-wider hover:bg-surface-container transition-all hover:text-white">
+            Booking page for quantum computing time
+          </button>
+<button class="px-5 py-2 rounded-full ghost-border bg-surface-container-low text-on-surface-variant font-label text-[11px] uppercase tracking-wider hover:bg-surface-container transition-all hover:text-white">
+            Neural network architecture visualization
+          </button>
+</div>
+</div>
+<!-- Main Interaction: Drafting Box -->
+<div class="max-w-3xl w-full relative z-10">
+<div class="glass-artifact rounded-xl p-1 shadow-2xl transition-all focus-within:ring-1 focus-within:ring-primary/50">
+<div class="bg-surface-container-highest/40 rounded-lg p-4">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-white placeholder-outline text-lg font-body resize-none min-h-[140px]" placeholder="Bring a problem to solve and see solutions."></textarea>
+<div class="flex items-center justify-between mt-4 pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-white hover:bg-surface-variant rounded-lg transition-all" title="Attach Files">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-white hover:bg-surface-variant rounded-lg transition-all" title="Selection Mode">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-white hover:bg-surface-variant rounded-lg transition-all" title="Web Search">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</button>
+<div class="h-4 w-[1px] bg-outline-variant/30 mx-2"></div>
+<span class="text-[10px] font-label uppercase text-outline tracking-widest px-2">v2.4 Technical Model</span>
+</div>
+<button class="bg-primary hover:bg-primary-fixed-dim text-on-primary font-label font-bold uppercase tracking-widest px-6 py-2.5 rounded-full flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span>Solve</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Metadata / Status bar below box -->
+<div class="flex justify-between items-center mt-4 px-2">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-tighter">System Ready</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-outline">memory</span>
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-tighter">40.2 TFLOPS Available</span>
+</div>
+</div>
+<div class="text-[10px] font-label uppercase text-outline tracking-tighter">
+            Press <kbd class="px-1 py-0.5 rounded border border-outline-variant bg-surface-container text-on-surface-variant">CMD</kbd> + <kbd class="px-1 py-0.5 rounded border border-outline-variant bg-surface-container text-on-surface-variant">K</kbd> for command palette
+          </div>
+</div>
+</div>
+<!-- Secondary Layout: Recent Artifacts (Bento Style) -->
+<div class="max-w-5xl w-full mt-24 grid grid-cols-12 gap-4">
+<div class="col-span-12 mb-4">
+<h3 class="font-label uppercase text-[12px] tracking-[0.3em] text-primary">Recent Active Artifacts</h3>
+</div>
+<!-- Artifact Card 1 -->
+<div class="col-span-12 md:col-span-7 glass-artifact rounded-lg overflow-hidden group cursor-pointer hover:border-primary/30 transition-all">
+<div class="h-48 bg-surface-container relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" data-alt="Abstract 3D visualization of complex data structures with glowing orange lines on a black field technical style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpmaHwvMeWKUOXGTtNj9HPpsme8gdSA-h1sjiFRuT7MuMMI9UOqHjHzCflrChJgkyIZwaYvQu_y7b6I7LKQiRDXXHEjXTflrfJ_njnIU9ElHDHvsuCtknUCOAQem99FrrQ0nV3O_V3FEcTACxk4mxcB5JNFxc5z6XovcksPABkmjJessQmiGYG9SlmcsbvZL2UfO_fTEgrABCjjH0iGnJVDfK5l1qroHmppjcHwwjSZKe_qITzaHIufhXFELudP63jahrT91EdtWeC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase text-primary tracking-widest">Simulation_Result.dat</span>
+<span class="material-symbols-outlined text-outline text-sm">open_in_new</span>
+</div>
+<h4 class="text-lg font-headline font-semibold text-white mb-2">Fluid Dynamics in Zero-G</h4>
+<p class="text-sm text-on-surface-variant font-body">Processed solution for orbital propellant management using Naviar-Stokes approximations.</p>
+</div>
+</div>
+<!-- Artifact Card 2 -->
+<div class="col-span-12 md:col-span-5 glass-artifact rounded-lg p-6 flex flex-col justify-between hover:border-primary/30 transition-all cursor-pointer">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] uppercase text-on-tertiary-container bg-tertiary/20 px-2 py-1 rounded tracking-widest">Reference_Node</span>
+<span class="material-symbols-outlined text-outline text-sm text-[#FF4500]">star</span>
+</div>
+<h4 class="text-lg font-headline font-semibold text-white mb-2">The Martian Habitat Blueprint</h4>
+<p class="text-sm text-on-surface-variant font-body mb-6">Structural analysis of pressurized domes using local basalt-fiber reinforcement.</p>
+</div>
+<div class="flex items-center gap-2 mt-auto">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-[10px] font-label">JS</div>
+<div class="text-[10px] font-label text-outline uppercase">Edited 2h ago</div>
+</div>
+</div>
+<!-- Artifact Card 3 (Small Wide) -->
+<div class="col-span-12 md:col-span-4 glass-artifact rounded-lg p-5 flex items-center gap-4 hover:border-primary/30 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<div>
+<div class="text-[10px] font-label text-outline uppercase tracking-tighter">Markdown</div>
+<div class="text-sm font-headline text-white font-medium">Design System v4</div>
+</div>
+</div>
+<!-- Artifact Card 4 (Small Wide) -->
+<div class="col-span-12 md:col-span-4 glass-artifact rounded-lg p-5 flex items-center gap-4 hover:border-primary/30 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">image</span>
+</div>
+<div>
+<div class="text-[10px] font-label text-outline uppercase tracking-tighter">Image.PNG</div>
+<div class="text-sm font-headline text-white font-medium">Render_Final_02.png</div>
+</div>
+</div>
+<!-- Artifact Card 5 (Small Wide) -->
+<div class="col-span-12 md:col-span-4 glass-artifact rounded-lg p-5 flex items-center gap-4 hover:border-primary/30 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">code</span>
+</div>
+<div>
+<div class="text-[10px] font-label text-outline uppercase tracking-tighter">Script.JS</div>
+<div class="text-sm font-headline text-white font-medium">API_Orchestrator.ts</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats / Floating Indicators -->
+<footer class="mt-auto border-t border-outline-variant/10 px-8 py-4 flex justify-between items-center text-[10px] font-label text-outline uppercase tracking-[0.2em]">
+<div class="flex gap-8">
+<span>Latency: 24ms</span>
+<span>Uptime: 99.9%</span>
+<span class="text-primary-container">Encrypted_Session: Active</span>
+</div>
+<div>
+        © 2024 Spatial Canvas Research Corp.
+      </div>
+</footer>
+</main>
+<!-- Background Dot Grid Layer (Floating overlay for texture) -->
+<div class="fixed inset-0 pointer-events-none opacity-20 technical-grid-fade z-0"></div>
+</body></html>

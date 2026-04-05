@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Soft Stone Palette (Dim Dark Mode) */
+  --canvas-bg: #3C3B39;
+  --surface-1: #464543;
+  --surface-2: #53514E;
+  --surface-glass: rgba(70, 69, 67, 0.88);
+  --border: #5C5A57;
+  --border-mid: #6B6966;
+
+  /* Surfaces */
+  --surface-artifact: rgba(60, 59, 57, 0.96);
+  --surface-prose: transparent;
+  --surface-formula: rgba(255, 255, 255, 0.045);
+  --surface-callout: rgba(255, 255, 255, 0.05);
+  --surface-panel: #3C3B39;
+  --surface-cluster: #464543;
+
+  /* Accent colors – Soft Stone triad */
+  --accent-clay: #E08A78;
+  --accent-blue: #7A9BBC;
+  --accent-matcha: #9DB396;
+
+  /* Phase accent colors (mapped to Soft Stone accents) */
+  --phase-hook: #E08A78;
+  --phase-foundation: #7A9BBC;
+  --phase-mechanism: #9DB396;
+  --phase-evidence: #B89BD0;
+  --phase-implications: #E08A78;
+  --phase-synthesis: #E08A78;
+  --phase-comparison: #D4976B;
+  --phase-query: #9DB396;
+
+  /* Text */
+  --text-1: #F2EFE9;
+  --text-2: #B8B5B0;
+  --text-3: #858380;
+  --text-primary: #F2EFE9;
+  --text-secondary: #B8B5B0;
+  --text-muted: #858380;
+  --text-formula: #F2EFE9;
+
+  /* Connectors */
+  --connector-main: #5C5A57;
+  --connector-active: #B8B5B0;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Geist', system-ui, sans-serif;
+  --font-prose: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-handwriting: 'Caveat', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-1);
+  background: var(--canvas-bg);
+}
+
+/* Infinite canvas dot grid */
+.dot-grid {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glass surface */
+.glass {
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
+
+/* Scene cluster card (prevents overlap) */
+.scene-cluster {
+  background: var(--surface-cluster);
+  border-radius: 14px;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+}
+
+/* Node entrance animation */
+.node-enter {
+  animation: nodeEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes nodeEnter {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Edge draw animation */
+.edge-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: edgeDraw 0.8s ease-out forwards;
+}
+
+@keyframes edgeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fade up */
+.fade-up {
+  animation: fadeUp 0.4s ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in from right */
+.slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Glow pulse for selected nodes */
+.glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--glow-color, #E08A78), 0 0 20px rgba(224, 138, 120, 0.15); }
+  50% { box-shadow: 0 0 0 1px var(--glow-color, #E08A78), 0 0 30px rgba(224, 138, 120, 0.25); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ── V3 Prose typography ──────────────────────────────────────────────────── */
+
+.prose-block h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: 0.5em;
+}
+.prose-block strong { color: #F2EFE9; font-weight: 600; }
+.prose-block em { color: var(--text-secondary); }
+.prose-block code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.prose-block ul, .prose-block ol {
+  padding-left: 1.2em;
+  margin: 0.5em 0;
+}
+.prose-block li {
+  margin-bottom: 0.3em;
+}
+.prose-block p {
+  margin: 0 0 0.8em;
+}
+.prose-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tutor panel markdown */
+.prose-tutor p { margin: 0 0 0.5em; }
+.prose-tutor p:last-child { margin-bottom: 0; }
+.prose-tutor strong { color: #e8edf8; }
+.prose-tutor h2, .prose-tutor h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  color: var(--text-primary);
+}
+.prose-tutor ul, .prose-tutor ol { padding-left: 1.2em; margin: 0.3em 0; }
+.prose-tutor code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* KaTeX overrides for dark theme */
+.katex { color: var(--text-formula, #e8e4d0); }
+.katex .mord { color: inherit; }
+.formula-katex .katex-display { margin: 0; }

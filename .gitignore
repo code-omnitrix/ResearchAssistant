@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# PyCharm
+.idea/
+*.iml
+
+# npm
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Data
+*.csv
+*.xlsx
+*.json
+*.db
+*.sqlite
+data/
+datasets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local

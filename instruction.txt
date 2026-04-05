@@ -1,0 +1,45 @@
+The user mentioned they uploaded design templates "in the front end folder" but no files were uploaded. They want me to:
+
+Create enriched agent LLM instructions for the AI research assistant app
+Design a rich fail-proof backend with rich prompting and documentation
+Implement fail-proof agentic cycling that checks and fixes errors
+Since they mentioned pictures and a "front end folder" but nothing was uploaded, I'll proceed with creating a comprehensive system prompt / agent instruction document and then build the full application.
+
+Let me think about the architecture:
+
+App Overview:
+
+Upload research papers (PDF)
+AI analyzes and creates a sequential interactive canvas
+Each concept is explained through animated HTML artifacts
+User can interact with the canvas freely
+Architecture:
+
+Frontend: React app with canvas/panel for displaying HTML artifacts sequentially
+Backend Agent System:
+Paper ingestion + extraction
+Concept decomposition agent
+HTML artifact generator agent
+Error checking/validation agent
+Agentic cycle with retry logic
+I need to create a comprehensive system prompt for the artifact generator with fail-safe agentic loops and rich documentation, then build out the full application starting with the core agent instructions and backend architecture.
+
+Building the React application... Building the React app with a split layout—PDF upload panel on the left, animated canvas on the right—that uses the Anthropic API to parse papers, extract concepts sequentially, generate rich HTML explanations for each one, validate them, and retry on errors. I'll create both the comprehensive agent instructions document and the full React implementation as a single artifact. Building the React app structure...
+
+I'm setting up the agentic pipeline to extract concepts from the paper, then generate interactive HTML artifacts for each one, storing them as we go. For the UI, I'm designing a dark research-themed interface with a sidebar showing the paper and concept outline, a main canvas displaying the current visualization, navigation controls between concepts, and an interaction panel at the bottom for user questions. I'll use PDF.js to handle text extraction from uploaded PDFs.
+
+Setting up the core structure with system prompts for concept extraction, HTML generation, validation, and interaction handling, plus an API layer to communicate with Claude...
+
+Now I'm organizing the agentic pipeline functions that will extract concepts from the paper, generate interactive artifacts, validate and repair the HTML output, and orchestrate the whole flow. Then I'm building out the React components—a PDF uploader, a canvas to display artifacts, individual concept cards, navigation controls, and an interaction panel—all wrapped in the main App component.
+
+For handling PDFs in the artifact environment, I can't rely on browser PDF libraries, so I'll convert uploaded PDFs to base64 and send them to the Anthropic API as document objects. Text files I'll read directly with FileReader. This way I can leverage Claude's document understanding capabilities to extract the paper content.
+
+Setting up the API call...
+
+Building out the complete implementation with rich agent instructions and a dark scientific aesthetic with navy backgrounds and amber accents.
+
+Defining the artifact requirements... Writing the component structure... I'm laying out the framework for analyzing research papers and breaking them into learnable concept modules that can become interactive visualizations. I need to map the knowledge structure, sequence concepts pedagogically from motivation through synthesis, and then specify what type of visualization and interaction would work best for each concept. The output should be a JSON object containing the paper metadata, concept modules, and visualization specifications. I'm defining the learning path structure that ties everything together—tracking the total number of concepts, calculating the cumulative study time, and setting up checkpoints at strategic intervals to help learners consolidate their understanding through quizzes, summaries, and reflection moments. Setting up the design system... Setting up the Google Fonts imports for the typography system. Now I'm moving into the visualization playbook, thinking through how to structure different types of interactive content—animations that unfold step-by-step with controls, diagrams that users can explore interactively... I'm rounding out the visualization options with interactive tooltips, zoom and filter capabilities, and multiple view options for the graph type. Then I'm outlining quiz interactions with immediate feedback and explanation reveals, plus timeline designs with scrollable events and zoom levels for different detail perspectives. I'm also noting the core interaction requirements that every artifact needs—progressive disclosure, micro-interactions, state persistence, touch and keyboard support, and loading animations—along with mandatory content structure sections.
+
+Setting up the HTML template... Building the HTML structure... I'm reviewing the quality standards and anti-patterns for building interactive HTML artifacts. The guidelines emphasize substantial, functional code with meaningful interactivity, dark themes, pure JavaScript, and integration of actual paper terminology and data. I need to ensure any artifact meets these criteria before outputting it. I'm looking at a checklist for validating HTML visualizations, checking for common runtime errors like null querySelector results, missing event listeners, and cleanup issues with timers. The list covers structural validity, quality metrics across interactivity and educational value, and specific technical pitfalls to watch for in interactive web content. I'm setting up a repair protocol to fix the reported issues while keeping all working features intact. I'll carefully read through the original HTML, identify each problem, and apply targeted fixes—adding null checks before DOM queries, ensuring animations trigger properly, and wrapping risky operations in try-catch blocks with graceful fallbacks. The output should be just the corrected HTML document starting with the DOCTYPE declaration, no explanation needed. I'm settling on the design approach—dark space aesthetic with gold accents, a three-panel layout with the paper info and concepts on the left, the rendered concept in the center via iframe, and a chat panel on the right for questions. I'll handle PDF uploads by converting them to base64 and sending them to the API as documents. Before building the full React app, I should create the enriched agent instructions document first since that's the primary deliverable the user asked for, then implement the application itself.
+
+Show less
